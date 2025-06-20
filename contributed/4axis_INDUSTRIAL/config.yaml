@@ -8,105 +8,111 @@ stepping:
   pulse_us: 2
   disable_delay_us: 0
 
+laser:
+  pwm_hz: 5000
+  output_pin: gpio.16
+  enable_pin: NO_PIN
+  disable_with_s0: false
+  s0_with_disable: true
+  tool_num: 0
+  speed_map: 0=0.000% 255=100.000%
+  off_on_alarm: true
+
+start:
+  must_home: false
+
 axes:
-  shared_stepper_disable_pin: NO_PIN # gpio.13:low
+  shared_stepper_disable_pin: NO_PIN
 
   x:
-    steps_per_mm: 800
+    steps_per_mm: 106.642
     max_rate_mm_per_min: 3000
     acceleration_mm_per_sec2: 100
     max_travel_mm: 600
     homing:
       cycle: 1
-      mpos_mm: 5
+      mpos_mm: 0
       positive_direction: false
+      seek_mm_per_min: 1000
 
     motor0:
       limit_all_pin: gpio.17:low:pu
+      pulloff_mm: 10
       stepstick:
         direction_pin: gpio.14
         step_pin: gpio.12
-    motor1:
-      null_motor:
 
   y:
-    steps_per_mm: 800
+    steps_per_mm: 118.707
     max_rate_mm_per_min: 3000
     acceleration_mm_per_sec2: 100
     max_travel_mm: 800
     homing:
       cycle: 1
-      mpos_mm: 5
-      positive_direction: false
+      mpos_mm: 0
+      positive_direction: true
+      seek_mm_per_min: 1000
 
     motor0:
       limit_all_pin: gpio.4:low:pu
+      pulloff_mm: 10
       stepstick:
-        direction_pin: gpio.15
+        direction_pin: gpio.25
         step_pin: gpio.26
-    motor1:
-      null_motor:
 
   z:
-    steps_per_mm: 800
-    max_rate_mm_per_min: 2000
+    steps_per_mm: 3208.672
+    max_rate_mm_per_min: 1000
     acceleration_mm_per_sec2: 25
-    max_travel_mm: 1000
+    max_travel_mm: 60
     homing:
-      cycle: 1
-      mpos_mm: 10
-      positive_direction: true
+
+      cycle: 0
 
     motor0:
-      limit_all_pin: gpio.16:low:pu
+      limit_all_pin: NO_PIN
       stepstick:
         direction_pin: gpio.33
         step_pin: gpio.27
-    motor1:
-      null_motor:
 
-  # a:
-  #   steps_per_mm: 800
-  #   max_rate_mm_per_min: 2000
-  #   acceleration_mm_per_sec2: 25
-  #   max_travel_mm: 1000
-  #   homing:
-  #     cycle: 1
-  #     mpos_mm: 10
-  #     positive_direction: true
+  a:
+    steps_per_mm: 888.890
+    max_rate_mm_per_min: 1000
+    acceleration_mm_per_sec2: 25
+    max_travel_mm: 60
+    homing:
+      cycle: 0
 
-  #   motor0:
-  #     limit_all_pin: gpio.16:low:pu
-  #     stepstick:
-  #       direction_pin: gpio.33
-  #       step_pin: gpio.27
-  #   motor1:
-  #     null_motor:
+    motor0:
+      limit_all_pin: NO_PIN
+      stepstick:
+        direction_pin: gpio.15
+        step_pin: gpio.32
 
-# spi:
-#   miso_pin: gpio.19
-#   mosi_pin: gpio.23
-#   sck_pin: gpio.18
+spi:
+  miso_pin: gpio.19
+  mosi_pin: gpio.23
+  sck_pin: gpio.18
 
-# sdcard:
-#   cs_pin: gpio.5
-#   card_detect_pin: NO_PIN
+sdcard:
+  cs_pin: gpio.5
+  card_detect_pin: NO_PIN
 
 # coolant:
-#   flood_pin: gpio.25
+#   flood_pin: gpio.15
 #   mist_pin:  gpio.21
 
-probe:
-  pin: gpio.32:low:pu
+# probe:
+#   pin: gpio.32:low:pu
 
-PWM:
-  pwm_hz: 5000
-  output_pin: gpio.2
-  enable_pin: gpio.22
-  direction_pin: NO_PIN
-  disable_with_s0: false
-  s0_with_disable: true
-  spinup_ms: 0
-  spindown_ms: 0
-  tool_num: 0
-  speed_map: 0=0% 10000=100%
+# PWM:
+#   pwm_hz: 5000
+#   output_pin: gpio.2
+#   enable_pin: gpio.22
+#   direction_pin: NO_PIN
+#   disable_with_s0: false
+#   s0_with_disable: true
+#   spinup_ms: 0
+#   spindown_ms: 0
+#   tool_num: 0
+#   speed_map: 0=0% 10000=100%
